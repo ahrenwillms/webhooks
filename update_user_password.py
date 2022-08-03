@@ -10,8 +10,6 @@
 
 import sys
 import requests
-import json
-import subprocess
 
 # Store the script's first argument as a serial number variable
 serial_number=sys.argv[1] if len(sys.argv) > 1 else "Invalid Serial Number"
@@ -58,7 +56,7 @@ logout_url = 'https://FILEMAKER_SERVER_URL/fmi/data/v1/databases/DATABASE_FILE_N
 logout_result = requests.delete(logout_url, data='')
 
 #########################################################################################
-# Call webhook to update password on G Suite and Open Directory
+# Call webhook to update password on Google Workspace and Open Directory
 #########################################################################################
 
 if status == "Assigned":
