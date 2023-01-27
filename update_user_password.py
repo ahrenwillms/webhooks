@@ -14,7 +14,7 @@ import requests
 # Store the script's first argument as a serial number variable
 serial_number = sys.argv[1] if len(sys.argv) > 1 else "Invalid Serial Number"
 
-print("Serial number is: %s" %serial_number)
+print(f"Serial number is: {serial_number}")
 
 #########################################################################################
 # Query FileMaker Data API and store result
@@ -36,7 +36,7 @@ query_data = {
 
 # Search FileMaker database for serial number
 query_url = 'https://FILEMAKER_SERVER_URL/fmi/data/v1/databases/DATABASE_FILE_NAME/layouts/LAYOUT_NAME/_find'
-query_headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer %s' %token}
+query_headers = {'Content-Type': 'application/json', 'Authorization': f'Bearer {token}'}
 query_result = requests.post(query_url, headers=query_headers, json=query_data)
 
 # Convert the result to JSON
@@ -52,7 +52,7 @@ status = query_response["response"]["data"][0]["fieldData"]["status"]
 print("Computer name from FileMaker Server is: %s" %computer_name)
 
 # Log out of FileMaker Server
-logout_url = 'https://FILEMAKER_SERVER_URL/fmi/data/v1/databases/DATABASE_FILE_NAME/sessions/%s' %token
+logout_url = f'https://FILEMAKER_SERVER_URL/fmi/data/v1/databases/DATABASE_FILE_NAME/sessions/{token}'
 logout_result = requests.delete(logout_url, data='')
 
 #########################################################################################
