@@ -49,7 +49,7 @@ password = query_response["response"]["data"][0]["fieldData"]["Users::current_pa
 status = query_response["response"]["data"][0]["fieldData"]["status"]
 
 # Print value(s) for debugging
-print("Computer name from FileMaker Server is: %s" %computer_name)
+print(f"Computer name from FileMaker Server is: {computer_name}")
 
 # Log out of FileMaker Server
 logout_url = f'https://FILEMAKER_SERVER_URL/fmi/data/v1/databases/DATABASE_FILE_NAME/sessions/{token}'
