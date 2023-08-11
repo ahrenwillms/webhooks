@@ -62,11 +62,11 @@ logout_result = requests.delete(logout_url, data='')
 if status == "Assigned":
     print("Computer is assigned. Updating password.")
     
-    webhook_query_data = {"username": username, "password": password}
+    webhook_request_data = {"username": username, "password": password}
     webhook_request_url = 'https://WEBHOOK_SERVER_URL/hooks/update-both-passwords'
     webhook_headers = {'Content-Type': 'application/json'}
     
-    webhook_result = requests.post(webhook_request_url, headers=webhook_headers, auth=('USERNAME', 'PASSWORD'), json=webhook_query_data)
+    webhook_result = requests.post(webhook_request_url, headers=webhook_headers, auth=('USERNAME', 'PASSWORD'), json=webhook_request_data)
 else:
     print("Computer is not assigned. Skipping password update")
 
